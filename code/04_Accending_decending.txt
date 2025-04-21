@@ -1,0 +1,79 @@
+//! DESCENDING
+
+#include <xc.h>
+#include <pic18f4550.h>
+
+void delay_ms(unsigned int ms) {
+    for(unsigned int i = 0; i < ms; i++)
+        for(unsigned int j = 0; j < 1000; j++);
+}
+
+void main(void) {
+    unsigned char a[] = {0x45, 0x03, 0x06, 0x13, 0x32, 0x02, 0x05, 0x23};
+    unsigned char i, j, temp;
+    unsigned char swapped;
+    
+    // Bubble sort (descending)
+    for(j = 0; j < 7; j++) {
+        swapped = 0;
+        for(i = 0; i < 7-j; i++) {
+            if(a[i] < a[i+1]) {
+                // Swap elements
+                temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                swapped = 1;
+            }
+        }
+        if(!swapped) break; // Early exit if no swaps
+    }
+    
+    // Output sorted array to PORTD
+    TRISD = 0;
+    for(i = 0; i < 8; i++) {
+        PORTD = a[i];
+        delay_ms(100);  // 100ms delay
+    }
+    
+    while(1);  // Halt
+}
+
+//todo: ASSENDING
+
+// #include <xc.h>
+// #include <pic18f4550.h>
+
+// void delay_ms(unsigned int ms) {
+//     for(unsigned int i = 0; i < ms; i++)
+//         for(unsigned int j = 0; j < 1000; j++);
+// }
+
+// void main(void) {
+//     unsigned char a[] = {0x45, 0x03, 0x06, 0x13, 0x32, 0x02, 0x05, 0x23};
+//     unsigned char i, j, temp;
+//     unsigned char swapped;
+    
+//     // Bubble sort (ascending)
+//     for(j = 0; j < 7; j++) {
+//         swapped = 0;
+//         for(i = 0; i < 7-j; i++) {
+//             if(a[i] > a[i+1]) {
+//                 // Swap elements
+//                 temp = a[i];
+//                 a[i] = a[i+1];
+//                 a[i+1] = temp;
+//                 swapped = 1;
+//             }
+//         }
+//         if(!swapped) break; // Early exit if no swaps
+//     }
+    
+//     // Output sorted array to PORTD
+//     TRISD = 0;
+//     for(i = 0; i < 8; i++) {
+//         PORTD = a[i];
+//         delay_ms(100);  // 100ms delay
+//     }
+    
+//     while(1);  // Halt
+// }

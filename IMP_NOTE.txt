@@ -1,0 +1,43 @@
+1>  TRIS REGISTER: Control whether pins are inputs or outputs
+        example:TRISD = 0 makes all PORTD pins outputs
+                TRISD = 1 (or 0xFF) → All PORTD pins are inputs
+
+2>  PORT REGISTER: For inputs and outputs
+        In the PIC18F4550 microcontroller, each I/O port has 8 pins
+        eg: PORTD have 8 pins as RD0, RD1, ... RD7
+
+        exception: PORTA have 7 pins and PORTE only contain 3 pins , RE0, RE1, RE2 Used for ADC or Control signal
+
+
+3> LATCH REGISTER (LATx)
+        Used for output operations to avoid read-modify-write issues.
+        Example:
+            LATD = 0xAA; → Writes 10101010 to PORTD.
+            Preferred over PORTx for writing outputs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
