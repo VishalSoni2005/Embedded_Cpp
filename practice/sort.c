@@ -9,7 +9,7 @@
   TRISD = 0x00; // Set PORTD as output
   TRISD = 0xFF; // Set PORTD as input
 
-
+//! ASSENDING
 #include <xc.h>
 #include <pic18f4550.h>
 
@@ -39,5 +39,12 @@ void main(void) {
     }
   }
   // array is sorted uptill now
+  // Bubble sort (descending)
+  TRISD = 0x00; // Set PORTD as output
+  for(int i=0; i<size; i++) {
+    PORTD = a[i]; // Send sorted value to PORTD
+    delayLoop(); // Call delay function
+  }
+  while (1);
 
 }
