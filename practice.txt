@@ -1,0 +1,9 @@
+what i gonna practice for exam 
+
+practical number :  1( add ), 
+                    2( array adn ), 
+                    3( transfer element ), 
+                    4 ( sorting ),
+                    5( led blink ),
+                    6( buzzer ) 
+                    7 ( dc ) 
