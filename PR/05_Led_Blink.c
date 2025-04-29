@@ -1,15 +1,22 @@
 #include <xc.h>
+void delay(unsigned int time)
+{
 
-void delay(void) {
-    for (int i = 0; i < 1000; i++)
-        for (int j = 0; j < 1000; j++); // Simple delay loop
-}
-
-void main(void) {
-  TRISD = 0;
-  LATD = 1;
-  while(1) {
-    LATD =~ LATD; // Toggle the LED state
-    delay(); // Call the delay function
+  for (int i = 0; i < time; i++)
+  {
+    for (int j = 0; j < 5000; j++)
+    {
+    }
   }
-} 
+}
+void main(void)
+{
+  TRISD = 0x00;
+  LATD = 0xff;
+  while (1)
+  {
+    LATD = ~LATD;
+    delay(200);
+  }
+  return;
+}
